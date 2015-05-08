@@ -35,8 +35,7 @@ module.exports = function(sequelize, DataTypes) {
       unique: true
     },
     provider: {
-      type: DataTypes.ENUM,
-      values: ['local', 'google', 'facebook'],
+      type: DataTypes.STRING,
       allowNull: false
     },
     encrypted_password: DataTypes.STRING,

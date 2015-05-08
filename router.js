@@ -1,4 +1,4 @@
-module.exports = function(app, db, auth) {
+module.exports = function(app, db) {
 
   // Middleware to use for all requests - test only
   app.all('*', function(req, res, next) {
@@ -10,14 +10,13 @@ module.exports = function(app, db, auth) {
   var cors = require('cors');
   app.use(cors());
 
-
   // Define Namespaced API Router
   var apiRouter = require('express').Router();
 
   apiRouter.options('*', cors());
 
   // API Routes
-  require('./routes/api/users')(app, db, apiRouter);
+  require('./routes/api/user')(app, db, apiRouter);
   require('./routes/api/airtime')(app, db, apiRouter);
 
   app.use('/api/v1', apiRouter);
@@ -33,7 +32,6 @@ module.exports = function(app, db, auth) {
   // 500 error handler --> production only
   // need to improve 500 logging
   app.use(function(error, req, res) {
-    res.status(500);
     res.render('500', { title:'500: Internal Server Error', error: error });
   });
 

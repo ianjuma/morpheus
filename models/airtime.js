@@ -10,25 +10,20 @@ module.exports = function(sequelize, DataTypes) {
     },
     date_sent: {
       type: DataTypes.DATE,
+      allowNull: false,
       defaultValue: DataTypes.NOW
     },
     status: {
       type: DataTypes.ENUM,
       allowNull: false,
-      defaultValue: 'WAIT',
-      values: ['SUCCESS', 'FAIL', 'WAIT'],
+      defaultValue: 'PENDING',
+      values: ['SUCCESS', 'FAIL', 'PENDING'],
       validate: {
-        isIn: [['SUCESS', 'FAIL', 'WAIT']]
+        isIn: [['SUCCESS', 'FAIL', 'PENDING']]
       }
     }
   }, {
-    underscored: true,
-    classMethods: {
-      underscored: true,
-      associate: function(models) {
-        Airtime.belongsTo(models.User, { foreignKey: 'id' });
-      }
-    }
+    underscored: true
   });
 
   return Airtime;

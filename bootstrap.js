@@ -25,7 +25,7 @@ module.exports = function(app, express) {
   var config = require('./config/database');
 
   // setup the logger and only log errors
-  var accessLogStream = fs.createWriteStream('autobay.log', {
+  var accessLogStream = fs.createWriteStream('morpheus.log', {
     flags: 'a'
   });
   app.use(logger('combined', {
