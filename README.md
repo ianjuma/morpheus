@@ -1,7 +1,4 @@
-#### Autobay LTD
-
-Autobay LTD car rental app.
-
+#### morph
 
 ###### Create a .env file:
 
@@ -29,6 +26,6 @@ npm install
 Finally launch the app using:
 ```javascript
 
-./start-api.sh
+node app
 
 ```
