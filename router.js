@@ -18,6 +18,7 @@ module.exports = function(app, db) {
   // API Routes
   require('./routes/api/user')(app, db, apiRouter);
   require('./routes/api/airtime')(app, db, apiRouter);
+  require('./routes/api/login')(app, db, apiRouter);
 
   app.use('/api/v1', apiRouter);
 
