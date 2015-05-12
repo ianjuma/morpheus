@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    encrypted_password: DataTypes.STRING,
+    encrypted_pin: DataTypes.STRING,
     date_registered: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW
