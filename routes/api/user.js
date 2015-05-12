@@ -53,13 +53,8 @@ module.exports = function(app, db, apiRouter) {
    */
   UserResource.post('/', function (req, res) {
     db.User.create({
-      gender: req.body.gender,
-      verification: "pending",
-      primary_email: req.body.primary_email,
-      name: req.body.name,
-      phone_number: req.body.phone_number,
-      encrypted_password: req.body.encrypted_password,
-      provider: req.body.provider
+      phoneNumber: req.body.phoneNumber,
+      encrypted_pin: req.body.encrypted_pin
     }).then(function(user) {
       res.status(201).json( user );
     }).on('error', function (err) {
@@ -82,13 +77,8 @@ module.exports = function(app, db, apiRouter) {
     db.User.find(req.params.id)
       .then(function(user) {
         if (user !== null) {
-          user.gender = req.body.gender;
-          user.verification = req.body.verification;
-          user.primary_email = req.body.primary_email;
-          user.phone_number = req.body.phone_number;
-          user.name = req.body.name;
-          user.provider = req.body.provider;
-          user.encrypted_password = req.body.encrypted_password;
+          user.phoneNumber = req.body.phoneNumber;
+          user.encrypted_pin = req.body.encrypted_pin;
 
           user.save()
             .then(function(user) {
